@@ -1,3 +1,2 @@
-# TDD-Nodejs
-# TDD excercise with Nodejs 
-# Kata excercise 
+## TDD-Nodejs
+### TDD Kata exercises with Nodejs 
