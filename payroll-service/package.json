@@ -1,0 +1,27 @@
+{
+  "name": "payroll-service",
+  "version": "1.0.0",
+  "description": "create a payroll service",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DemiJiang/TDD-Nodejs.git"
+  },
+  "author": "Demi Jiang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DemiJiang/TDD-Nodejs/issues"
+  },
+  "homepage": "https://github.com/DemiJiang/TDD-Nodejs#readme",
+  "devDependencies": {
+    "mocha": "^6.2.0"
+  },
+  "dependencies": {
+    "csv-parser": "^2.3.0",
+    "csv-writer": "^1.5.0",
+    "sleep": "^6.1.0"
+  }
+}
