@@ -1,9 +1,9 @@
 const assert = require('assert');
-const taxCalculate = require('../lib/payroll');
+const payslipCalculate = require('../lib/CSVProcessor');
 
 describe('Calculate tax', function () {
-    it('Tax of annual salary 180,001 should equal 54232.45', function () {
-        assert.equal(taxCalculate(180001), 54232.45)
+    it('Tax of annual salary 60050 should equal 922', function () {
+        assert.equal(payslipCalculate.incomeTaxCal(60050), 922)
     });
 
     it('Tax of annual salary 87,001 should equal 19822.37', function () {
