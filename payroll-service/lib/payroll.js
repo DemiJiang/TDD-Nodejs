@@ -3,6 +3,17 @@ const fs = require('fs');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const employeeDatas = [];
 const employeePayslips = [];
+const csvWriter = createCsvWriter({
+    path: 'employee_payslip.csv',
+    header: [
+        {id: 'name', title: 'name'},
+        {id: 'payPeriod', title: 'pay period'},
+        {id: 'grossIncome', title: 'gross income'},
+        {id: 'incomeTax', title: 'income tax'},
+        {id: 'netIncome', title: 'net income'},
+        {id: 'super', title: 'super'},
+    ]
+});
 
 fs.createReadStream('employee_data.csv')
     .pipe(csv())
@@ -18,7 +29,10 @@ fs.createReadStream('employee_data.csv')
             employeePayslip.super = calculateSuper(employeePayslip.grossIncome, employeeData.superRate);
             employeePayslips.push(employeePayslip);
         });
-        console.log(employeePayslips);
+        csvWriter
+            .writeRecords(employeePayslips)
+            .then(()=> console.log('The CSV file was written successfully'));
+
     });
 
 function calculateIncomeTax(annuSalary){
@@ -46,42 +60,3 @@ function calculateGrossIncome(annuSalary) {
 function calculateSuper(grossIncome, superRate){
     return Math.round(grossIncome * superRate)
 }
-
-
-
-// const csvWriter = createCsvWriter({
-//     path: 'employee_payslip.csv',
-//     header: [
-//         {id: 'name', title: 'name'},
-//         {id: 'payPeriod', title: 'pay period'},
-//         {id: 'grossIncome', title: 'gross income'},
-//         {id: 'incomeTax', title: 'income tax'},
-//         {id: 'netIncome', title: 'net income'},
-//         {id: 'super', title: 'super'},
-//     ]
-// });
-//
-// const employees = [ { name: 'David Rudd',
-//     payPeriod: '01 March - 31 March',
-//     grossIncome: 5004,
-//     incomeTax: 922,
-//     netIncome: 4082,
-//     super: 450 },
-//     { name: 'Ryan Chen',
-//         payPeriod: '01 March - 31 March',
-//         grossIncome: 10000,
-//         incomeTax: 2669,
-//         netIncome: 7331,
-//         super: 1000 } ]
-//
-//
-// csvWriter
-//     .writeRecords(employees)
-//     .then(()=> console.log('The CSV file was written successfully'));
-
-
-
-
-
-
-// Question 1: what happened if annual salary is less than 0?
