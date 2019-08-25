@@ -34,5 +34,3 @@ fs.createReadStream('../input_csv/employee_data.csv')
             .writeRecords(employeePayslips)
             .then(()=> console.log('The employee payslip was generated successfully'));
     });
-
-
