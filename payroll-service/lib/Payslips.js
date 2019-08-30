@@ -1,7 +1,7 @@
 const collectInfo = require('./CSVReader');
 const calculation = require('./Calculator');
 
-const collectPayslips = async() =>{
+module.exports = async() =>{
     const payslips = [];
     const employees = await collectInfo();
 
@@ -18,5 +18,3 @@ const collectPayslips = async() =>{
 
     return payslips
 };
-
-module.exports = collectPayslips
