@@ -1,14 +1,8 @@
 const taxBracket = require('../lib/TaxBracket');
-const employees = require('../lib/CSVReader');
 
-const getIncomeTax = (salary, taxBracket) => {
-    var result;
-    taxBracket.forEach(element => {
-        if (salary > element.lowBand && salary <= element.highBand) {
-            result = Math.round((element.amount + (salary - element.lowBand) * element.rate) / 12)
-        }
-    });
-    return result;
+const getIncomeTax = (salary) => {
+    const newArray = taxBracket.filter(element => salary > element.lowBand && salary <= element.highBand);
+    return Math.round((newArray[0].amount + (salary - newArray[0].lowBand) * newArray[0].rate) / 12)
 };
 
 const getGrossIncome = (annuSalary) => {
@@ -19,12 +13,8 @@ const getSuper = (grossIncome, superRate) => {
     return Math.round(grossIncome * superRate)
 };
 
-
-// console.log(getIncomeTax(80000, taxBracket));
-
 module.exports = {
     getIncomeTax,
     getGrossIncome,
     getSuper
-
 };
