@@ -1,4 +1,3 @@
-const collectPayslips = require('./Payslips');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const csvWriter = createCsvWriter({
     path: '../output_csv/employee_payslip.csv',
@@ -12,11 +11,7 @@ const csvWriter = createCsvWriter({
     ]
 });
 
-generatePayslips()
-
-async function generatePayslips(){
-    const payslips = await collectPayslips()
-    csvWriter
-        .writeRecords(payslips)
-        .then(()=> console.log('The employee payslip was generated successfully'));
-}
+module.exports = async(payslips) => {
+    const result = await csvWriter.writeRecords(payslips)
+    console.log('The employee payslip is generated successfully');
+};

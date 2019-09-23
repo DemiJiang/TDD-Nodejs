@@ -26,6 +26,7 @@ module.exports = [
     {
         lowBand: 180000,
         amount: 54232,
-        rate: 0.45
+        rate: 0.45,
+        highBand: Number.MAX_SAFE_INTEGER
     }
 ];
